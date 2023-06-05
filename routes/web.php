@@ -31,7 +31,7 @@ Route::get('/', function () {
    $max=$arrs[0];
    for($i=1;$i<$len;$i++)
    {
-    if($arrs[$i] < $max)
+    if($arrs[$i] > $max)
     {
         $max=$arrs[$i];
     }
