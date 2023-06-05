@@ -21,8 +21,27 @@ use Illuminate\Support\Facades\Redis;
 */
 
 Route::get('/', function () {
-    return view('user.home');
-})->name('user.home')->middleware('auth:web');
+   $arrs=['1','5','20','-1'];
+   $len=0;
+   foreach($arrs as $arr)
+   {
+    $len=$len+1;
+
+   }
+   $max=$arrs[0];
+   for($i=1;$i<$len;$i++)
+   {
+    if($arrs[$i] < $max)
+    {
+        $max=$arrs[$i];
+    }
+
+   }
+   dd($max);
+
+ 
+  
+});
 Route::get('/login',[UserAuthController::class,'login'])->name('user.login');
 Route::post('/login',[UserAuthController::class,'handlelogin'])->name('user.handlelogin');
 Route::get('/logout',[UserAuthController::class,'logout'])->name('user.logout');
