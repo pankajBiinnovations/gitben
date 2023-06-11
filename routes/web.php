@@ -1,9 +1,12 @@
 <?php
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\UserAuthController;
 use App\Http\controllers\AdminAuthController;
 use App\Http\controllers\BlogController;
+use App\Http\controllers\UsersController;
+use App\Http\controllers\UserController;
 
 use Illuminate\Support\Facades\Redis;
 
@@ -80,3 +83,51 @@ Route::get('sort',function(){
     
 });
 Route::get('/bl/{id}', [BlogController::class, 'bl']);
+
+Route::get('index', [UsersController::class, 'create']);
+Route::post('store', [UsersController::class, 'store'])->name('store');
+
+Route::get('/data/load-more', [UsersController::class, 'loadMore'])->name('data.loadMore');
+
+Route::get('services', [UsersController::class, 'myMethod']);
+Route::get('edit/{id}', [UsersController::class, 'edit']);
+
+Route::get('/payment', [PaymentController::class,'index']);
+Route::post('/payment/process', [PaymentController::class,'processPayment']);
+Route::get('jobs', [PaymentController::class,'jobs']);
+
+Route::get('dd',function(){
+   ProcessData::dispatch($request->input());
+   
+
+});
+Route::get('sum',function(){
+
+   $arrs=[1,4,5];
+   $len=count($arrs);
+   $sum=0;
+   foreach($arrs as $arr)
+   {
+      $sum+= $arr;
+   }
+   dd($sum);
+});
+
+Route::get('max',function(){
+   $arrs=[1,5,87,6];
+   $len = count($arrs);
+   $max=$arrs[0];
+   for($i=1;$i<=$len;$i++){
+      if($arrs[$i] > $max)
+      {
+          $max=$arrs[$i];
+      }
+  dd($max);
+
+   }
+});
+
+Route::get('post',[PostController::class,'index']);
+
+Route::any('/register', [UserController::class, 'register']);
+Route::any('/form', [UserController::class, 'form']);
