@@ -131,3 +131,41 @@ Route::get('post',[PostController::class,'index']);
 
 Route::any('/register', [UserController::class, 'register']);
 Route::any('/form', [UserController::class, 'form']);
+
+Route::get('/login/facebook', [UserController::class,'redirectToFacebook']);
+Route::get('/login/facebook/callback', [UserController::class,'handleFacebookCallback']);
+
+Route::get('curl',function(){
+   $curl = curl_init();
+$data="hello";
+$options = array(
+    CURLOPT_POST => true,
+    CURLOPT_HEADER => true,
+    CURLOPT_URL => "https://example.example.com/api/example.php",
+    CURLOPT_FRESH_CONNECT => true,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_FORBID_REUSE => true,
+    CURLOPT_TIMEOUT => 10,
+    CURLOPT_FAILONERROR => true,
+    CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+    CURLOPT_SSL_VERIFYPEER => false, // REMOVE IN PRODUCTION, IGNORES SELFSIGNED SSL
+    CURLOPT_POSTFIELDS => $data // Replace $data with the actual data to be sent in the POST request
+);
+
+curl_setopt_array($curl, $options);
+
+$response = curl_exec($curl);
+
+if ($response === false) {
+    echo 'cURL error: ' . curl_error($curl);
+}
+
+curl_close($curl);
+
+echo $response;
+
+  
+});
+
+Route::get('related',[UserController::class,'related']);
+

@@ -4,7 +4,7 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost',
+    'url' => 'https://localhost',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
@@ -387,7 +387,7 @@
       array (
         'driver' => 'local',
         'root' => 'C:\\xamp\\htdocs\\newProject\\storage\\app/public',
-        'url' => 'http://localhost/storage',
+        'url' => 'https://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
       ),
@@ -677,6 +677,12 @@
       'secret' => NULL,
       'endpoint' => 'api.mailgun.net',
       'scheme' => 'https',
+    ),
+    'facebook' => 
+    array (
+      'client_id' => '742474064548116',
+      'client_secret' => '5b269c652e8ca9243c5e771d7259021f',
+      'redirect' => 'https://https://localhost.com/login/facebook/callback',
     ),
     'stripe' => 
     array (

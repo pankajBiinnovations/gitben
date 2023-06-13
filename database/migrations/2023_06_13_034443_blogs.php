@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('blog_id');
-            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
-           
+            $table->string('title');
+            $table->text('content');
             $table->timestamps();
         });
     }

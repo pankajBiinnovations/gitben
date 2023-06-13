@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use app\Events\WelcomeEmailEvent;
 use app\Listeners\SendWelcomeEmailListener;
+use App\Observers\UserObserver;
+use App\Models\User;
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -29,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        User::observe(UserObserver::class);
     }
 
     /**

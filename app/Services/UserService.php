@@ -8,6 +8,7 @@ class UserService implements UserServiceInterface
 {
     public function registerUser(string $name, string $email, string $password)
     {
+       
         // Validation logic
 
         $user = new User();
