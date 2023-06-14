@@ -61,8 +61,10 @@ class UserController extends BaseController
     public function related()
     {
         // $users = Post::withCount('comments')->get();
-        $blogs = Blog::with('comments')->get();
-        
+        // $blogs = Blog::with('comments')->paginate(2);
+        $blogs = Blog::find(1);
+        dd($blogs->load('comments'));
+       
         return view('users.index', compact('blogs'));
     }
 }

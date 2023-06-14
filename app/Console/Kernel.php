@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('minute')->everyMinute();
         $schedule->command('done')->everyMinute();
+        $schedule->command('app:del')->everyMinute();
     }
 
     /**
