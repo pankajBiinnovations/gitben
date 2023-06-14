@@ -169,3 +169,7 @@ echo $response;
 
 Route::get('related',[UserController::class,'related']);
 
+Route::get('user/{name}',function($name){
+
+   dd($name);
+})->where('name','[a-z A-Z]+'); // Regular expression with url
