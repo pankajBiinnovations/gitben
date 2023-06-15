@@ -173,3 +173,6 @@ Route::get('user/{name}',function($name){
 
    dd($name);
 })->where('name','[a-z A-Z]+'); // Regular expression with url
+Route::get('reg/{name}',function($name){
+   dd($name);
+})->where(['name','[a-z]+']);
