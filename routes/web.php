@@ -176,3 +176,7 @@ Route::get('user/{name}',function($name){
 Route::get('reg/{name}',function($name){
    dd($name);
 })->where(['name','[a-z]+']);
+
+Route::get('user/{name?}', function ($name = 'John') {
+   return $name;
+});  //Optional Route Parameters With Defaults
