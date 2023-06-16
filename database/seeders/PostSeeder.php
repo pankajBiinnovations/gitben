@@ -13,7 +13,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(2)->create();
+        Post::factory(3)->create();
     //   Post::create(['name'=>'jhjh']);
     }
 }
