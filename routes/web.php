@@ -7,10 +7,10 @@ use App\Http\controllers\AdminAuthController;
 use App\Http\controllers\BlogController;
 use App\Http\controllers\UsersController;
 use App\Http\controllers\UserController;
-
+use App\Models\User;
 use Illuminate\Support\Facades\Redis;
-
-
+use App\Http\Controllers\HeaderController;
+use Laravel\SerializableClosure\SerializableClosure;
 
 /*
 |--------------------------------------------------------------------------
@@ -180,3 +180,39 @@ Route::get('reg/{name}',function($name){
 Route::get('user/{name?}', function ($name = 'John') {
    return $name;
 });  //Optional Route Parameters With Defaults
+Route::get('nn', function () {
+   $a=3;
+   $a='ram';
+   $a='ramaaa';
+   echo($a);
+});  //Optional Route Parameters With Defaults
+Route::get('swap', function () {
+   $a = 10;
+$b = 20;
+
+echo "Before swapping: a = $a, b = $b";
+
+$a = $a ^ $b;
+$b = $a ^ $b;
+$a = $a ^ $b;
+
+echo "\nAfter swapping: a = $a, b = $b";
+});  //Optional Route Parameters With Defaults
+
+
+
+Route::get('/users', [UserController::class,'index']);
+Route::get('/users/create', 'UserController@create');
+Route::post('/users', 'UserController@store');
+Route::get('/users/{user}', 'UserController@show');
+Route::get('/users/edit/{user}', 'UserController@edit');
+Route::put('/users/{user}', 'UserController@update');
+Route::patch('/users/{user}', 'UserController@update');
+Route::delete('/users/{user}', 'UserController@destroy');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::get('head', [HeaderController::class, 'showHeader']);

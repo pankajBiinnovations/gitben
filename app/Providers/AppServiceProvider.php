@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\UserService;
 use App\Services\UserServiceInterface;
+use App\Services\UserInterface;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
             return new MyService();
         });
         $this->app->bind(UserServiceInterface::class, UserService::class);
+        $this->app->bind(UserInterface::class, UserService::class);
     }
 
     /**
