@@ -5,15 +5,23 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
-use DB;
-class PostSeeder extends Seeder
+use Faker\Factory as FakerFactory;
+class Postseeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Post::factory(3)->create();
-    //   Post::create(['name'=>'jhjh']);
+        $faker = FakerFactory::create();
+
+        // Generate and insert dummy data for users
+        for ($i = 0; $i < 10; $i++) {
+            \App\Models\User::create([
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => bcrypt('password'),
+            ]);
+        }
     }
 }

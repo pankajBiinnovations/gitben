@@ -129,7 +129,7 @@ Route::get('max',function(){
 
 Route::get('post',[PostController::class,'index']);
 
-Route::any('/register', [UserController::class, 'register']);
+// Route::any('/register', [UserController::class, 'register']);
 Route::any('/form', [UserController::class, 'form']);
 
 Route::get('/login/facebook', [UserController::class,'redirectToFacebook']);

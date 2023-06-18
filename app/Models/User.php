@@ -8,11 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class User extends Authenticatable  implements JWTSubject
 {
     use SoftDeletes;
     use HasApiTokens, HasFactory, Notifiable;
-protected $table='users';
+
     // protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
@@ -23,6 +25,7 @@ protected $table='users';
         'name',
         'email',
         'password',
+        'remember_token',
     ];
 
     /**
@@ -32,7 +35,7 @@ protected $table='users';
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        
     ];
 
     /**
@@ -44,4 +47,14 @@ protected $table='users';
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    
 }

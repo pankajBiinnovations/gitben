@@ -9,7 +9,7 @@ class HeaderController extends Controller
 {
     public function showHeader()
     {
-        $categories = Category::with('subcategories')->paginate(1);
+        $categories = Category::with('subcategories')->paginate(2);
 
         return view('header', compact('categories'));
     }
