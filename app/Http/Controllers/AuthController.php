@@ -52,7 +52,7 @@ class AuthController extends Controller
             'name' => $user->name,
             'email' => $user->email,
            
-            // Add any other desired user profile datas
+            // Add any other desired user profile data
         ]);
     }
 }
