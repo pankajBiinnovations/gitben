@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\UserService;
 use Illuminate\Http\Request;
-
+use App\Models\Blog;
 class UserController extends Controller {
 	protected $user;
 	public function __construct(UserService $user) {
@@ -85,4 +85,12 @@ class UserController extends Controller {
 		$this->user->destroy($id);
 		return redirect('/users');
 	}
+
+	public function related()
+    {
+        $blogs=Blog::with('comments')->get();
+		
+		
+         return view('related',compact('blogs'));
+    }
 }

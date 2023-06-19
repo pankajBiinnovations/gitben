@@ -216,3 +216,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('head', [HeaderController::class, 'showHeader']);
+Route::get('addmoney/stripe', [HeaderController::class, 'payWithStripe']);
+Route::post('addmoney/stripe', [HeaderController::class, 'postPaymentWithStripe']);
+
+// Route::get('', array('as' => 'addmoney.paywithstripe','uses' => 'AddMoneyController@payWithStripe'));
+Route::post('', array('as' => 'addmoney.stripe','uses' => 'AddMoneyController@postPaymentWithStripe'));
+
+
