@@ -55,4 +55,15 @@ class AuthController extends Controller
             // Add any other desired user profile data
         ]);
     }
+    public function logout(Request $request)
+    {
+        try {
+            // Invalidate the current token
+            JWTAuth::invalidate(JWTAuth::getToken());
+            return response()->json(['message' => 'Successfully logged out']);
+        } catch (JWTException $e) {
+            // Handle any exceptions that occurred
+            return response()->json(['message' => 'Failed to logout'], 500);
+        }
+    }
 }
