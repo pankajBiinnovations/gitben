@@ -24,8 +24,12 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         $token = JWTAuth::fromUser($user);
-        $user->remember_token=$token;
-        return response()->json(['message' => 'Registration successful','token'=>$token], 201);
+       
+        return response()->json([
+            'message' => 'Registration successful',
+            'token'=>$token,
+            'token_type'=>'bearer',
+        ], 201);
     }
 
     public function login(Request $request)
@@ -66,4 +70,6 @@ class AuthController extends Controller
             return response()->json(['message' => 'Failed to logout'], 500);
         }
     }
+
+    
 }
